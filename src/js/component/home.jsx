@@ -57,7 +57,13 @@ const Home = () => {
 	}
 
 	useEffect(() => {
-		getDatos();
+		fetch("https://assets.breatheco.de/apis/fake/todos/user/<tereelena>")
+			.then(respuesta => respuesta.json())
+			.then(respuesta => {
+				setlistareas(respuesta);
+				console.log(respuesta);
+			})
+			.catch(error => console.log("Ocurre un error...", error));
 	}, []);
 
 	// funcion que valida que el campo  tarea no este vacio y vaya llenanod el arreglo lista tareas
